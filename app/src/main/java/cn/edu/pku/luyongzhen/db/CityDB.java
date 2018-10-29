@@ -19,7 +19,7 @@ public class CityDB {
     public List<City> getAllCity() {
         List<City> list = new ArrayList<City>();
         Cursor c = db.rawQuery("SELECT * from " + CITY_TABLE_NAME, null);
-        while (c.moveToNext()) {
+        while (c.moveToNext()) {                                                                  //从数据库中读取城市信息
             String province = c.getString(c.getColumnIndex("province"));
             String city = c.getString(c.getColumnIndex("city"));
             String number = c.getString(c.getColumnIndex("number"));
@@ -29,7 +29,7 @@ public class CityDB {
             String firstPY = c.getString(c.getColumnIndex("firstpy"));
             City item = new City(province, city, number, firstPY
                     , allPY,allFirstPY);
-            list.add(item);
+            list.add(item);                                                                      //将读取的信息放入列表
         }
         return list;
     }

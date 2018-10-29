@@ -24,16 +24,19 @@ public class MyApplication extends Application {
         super.onCreate();
         Log.d(TAG,"MyApplication->onCreate");
         mApplication=this;
-        mCityDB=openCityDB();
+        mCityDB=openCityDB();                                       //创建一个数据库
         initCityList();
     }
-    private void initCityList() {
+    public List<City> getmCityList(){
+        return this.mCityList;
+    }
+    private void initCityList() {                                  //通过
         mCityList = new ArrayList<City>();
-        new Thread(new Runnable() {
+        new Thread(new Runnable() {                                 //在线程中初始化城市列表
             @Override
             public void run() {
 // TODO Auto-generated method stub
-                prepareCityList();
+                prepareCityList();                                   //初始化列表mCityList并打印出消息
             }
         }).start();
     }
@@ -55,8 +58,8 @@ public class MyApplication extends Application {
     public static MyApplication getInstance(){
         return mApplication;
     }
-    private CityDB openCityDB() {
-        String path = "/data"
+    private CityDB openCityDB() {                                                 //打开数据库的方法
+        String path = "/data"                                                     //存放数据库文件的路径
                 + Environment.getDataDirectory().getAbsolutePath()
                 + File.separator + getPackageName()
                 + File.separator + "databases1"

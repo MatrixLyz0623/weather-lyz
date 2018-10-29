@@ -86,7 +86,6 @@ public class TodayWeather {
     public void setLow(String low){
         this.low=low;
     }
-
     public void setType(String type){
         this.type=type;
     }
